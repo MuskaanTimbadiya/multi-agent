@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env/
+
+# Mac
+.DS_Store
+
+# Logs
+*.log
+
+# SQLite DB (optional — important decision below)
+*.db
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+*.tar
+
+# Misc
+*.swp
