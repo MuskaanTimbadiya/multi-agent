@@ -125,8 +125,9 @@ http://127.0.0.1:8000/
 
 ## 📸 Screenshots
 
->assets/chat.png
->assets/dashboard.png
+assets/chat.png
+
+assets/dashboard.png
 
 
 
