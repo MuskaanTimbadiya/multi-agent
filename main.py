@@ -127,12 +127,36 @@ async def dashboard(request: Request):
     tasks = get_tasks()
     events = get_events()
     notes = get_notes()
+
+    task_list = [t[0] for t in tasks]
+    event_list = [e[0] for e in events]
+    note_list = [n[0] for n in notes]
+
+    # 📊 Stats
+    stats = {
+        "tasks": len(task_list),
+        "events": len(event_list),
+        "notes": len(note_list)
+    }
+
+    # 🧠 Simple AI Insight
+    insight = "You're all caught up! 🚀"
+
+    if stats["tasks"] > 3:
+        insight = "You have multiple tasks pending. Stay focused 💪"
+    elif stats["events"] > 2:
+        insight = "Busy schedule ahead! Plan wisely 📅"
+    elif stats["notes"] > 3:
+        insight = "You're capturing great ideas 🧠✨"
+
     return templates.TemplateResponse(
         request=request,
         name="dashboard.html",
         context={
-            "tasks": [t[0] for t in tasks],
-            "events": [e[0] for e in events],
-            "notes": [n[0] for n in notes],
+            "tasks": task_list,
+            "events": event_list,
+            "notes": note_list,
+            "stats": stats,
+            "insight": insight
         }
     )

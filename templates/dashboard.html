@@ -1,97 +1,236 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>NeuraFlow Dashboard</title>
 
     <style>
         body {
-            font-family: Arial;
-            background: #0f172a;
-            color: white;
             margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e1b4b, #020617);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            color: white;
+            display: flex;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: auto;
+        @keyframes gradientBG {
+            0% { background-position: 0% }
+            50% { background-position: 100% }
+            100% { background-position: 0% }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(15px);
             padding: 20px;
+            height: 100vh;
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #a78bfa;
+            margin-bottom: 30px;
+        }
+
+        .nav a {
+            display: block;
+            color: #9ca3af;
+            text-decoration: none;
+            margin: 12px 0;
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Main */
+        .main {
+            flex: 1;
+            padding: 30px;
         }
 
         h1 {
             text-align: center;
+            color: #c4b5fd;
         }
 
+        /* Stats */
+        .stats {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(20px);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            width: 120px;
+            border: 1px solid rgba(255,255,255,0.05);
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .stat-card h2 {
+            margin: 0;
+            color: #a78bfa;
+        }
+
+        /* Insight */
+        .insight {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(20px);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+            animation: fadeInUp 0.5s ease;
+        }
+
+        /* Grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 25px;
         }
 
+        /* Cards */
         .card {
-            background: #1e293b;
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(20px);
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(139,92,246,0.3);
         }
 
         .card h2 {
             margin-top: 0;
+            color: #a78bfa;
         }
 
         li {
-            margin: 5px 0;
+            margin: 6px 0;
+            color: #e5e7eb;
         }
 
-        .top-bar {
-            text-align: center;
-            margin-bottom: 20px;
+        .empty {
+            color: #6b7280;
+            font-style: italic;
         }
 
-        a {
-            color: #60a5fa;
-            text-decoration: none;
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
     </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="sidebar">
+    <div class="logo">⚡ NeuraFlow</div>
+
+    <div class="nav">
+        <a href="/">💬 Chat</a>
+        <a href="/dashboard">📊 Dashboard</a>
+    </div>
+</div>
+
+<div class="main">
+
     <h1>📊 Dashboard</h1>
 
-    <div class="top-bar">
-        <a href="/">⬅ Back to Chat</a>
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat-card">
+            <h2>{{ stats.tasks }}</h2>
+            <p>Tasks</p>
+        </div>
+        <div class="stat-card">
+            <h2>{{ stats.events }}</h2>
+            <p>Events</p>
+        </div>
+        <div class="stat-card">
+            <h2>{{ stats.notes }}</h2>
+            <p>Notes</p>
+        </div>
     </div>
 
+    <!-- Insight -->
+    <div class="insight">
+        <h2>🧠 AI Insight</h2>
+        <p>{{ insight }}</p>
+    </div>
+
+    <!-- Data Grid -->
     <div class="grid">
 
         <div class="card">
             <h2>📋 Tasks</h2>
             <ul>
-                {% for task in tasks %}
-                    <li>{{ task }}</li>
-                {% endfor %}
+                {% if tasks %}
+                    {% for t in tasks %}
+                        <li>✔ {{ t }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li class="empty">No tasks yet</li>
+                {% endif %}
             </ul>
         </div>
 
         <div class="card">
             <h2>📅 Events</h2>
             <ul>
-                {% for event in events %}
-                    <li>{{ event }}</li>
-                {% endfor %}
+                {% if events %}
+                    {% for e in events %}
+                        <li>📌 {{ e }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li class="empty">No events scheduled</li>
+                {% endif %}
             </ul>
         </div>
 
         <div class="card">
             <h2>📝 Notes</h2>
             <ul>
-                {% for note in notes %}
-                    <li>{{ note }}</li>
-                {% endfor %}
+                {% if notes %}
+                    {% for n in notes %}
+                        <li>🧠 {{ n }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li class="empty">No notes saved</li>
+                {% endif %}
             </ul>
         </div>
 
     </div>
+
 </div>
 
 </body>
