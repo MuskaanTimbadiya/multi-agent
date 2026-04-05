@@ -128,7 +128,6 @@ add task study and remind me to call mom
 
 ## 🚀 Getting Started
 
-```bash
 git clone https://github.com/MuskaanTimbadiya/crypto-agent.git
 cd crypto-agent
 pip install -r requirements.txt
