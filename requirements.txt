@@ -1,6 +1,6 @@
 fastapi
 uvicorn
-sqlite-utils
 jinja2
 python-multipart
-pydantic-settings
+sqlite-utils
+google-generativeai
