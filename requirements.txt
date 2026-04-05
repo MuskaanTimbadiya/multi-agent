@@ -3,3 +3,4 @@ uvicorn
 sqlite-utils
 jinja2
 python-multipart
+pydantic-settings
