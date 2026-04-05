@@ -1,12 +1,36 @@
-# 🚀 Multi-Agent AI Assistant
+# 🚀 🧠 NeuraFlow AI — Multi-Agent Productivity Assistant
 
-A production-ready AI system that manages tasks, events, and notes using:
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
+![LLM](https://img.shields.io/badge/LLM-Gemini-orange)
+![Deployment](https://img.shields.io/badge/Deployed-Cloud%20Run-brightgreen)
+![Status](https://img.shields.io/badge/Status-Production--Ready-success)
 
-- 🤖 Multi-agent architecture
+---
+
+## 🌐 Live Demo
+
+https://crypto-agent-843080848499.asia-south1.run.app/
+
+---
+
+## 📦 GitHub Repository
+
+https://github.com/MuskaanTimbadiya/multi-agent
+
+---
+
+## 🧠 Overview
+
+NeuraFlow AI is a **multi-agent AI system** that manages tasks, events, and notes using natural language.
+
+It uses:
 - 🧠 LLM-based routing (Gemini)
 - 🔗 MCP-style tool integration
-- 💬 Chat UI + Dashboard
 - 🗄 SQLite database
+- 💬 Chat UI + 📊 Dashboard
+
+---
 
 🧩 Architecture
 
@@ -60,29 +84,32 @@ add task study and remind me to call mom
 - Example:delete all events
 
 
+
 ### 💬 Chat Interface
 - ChatGPT-style UI  
-- Typing animation  
-- Conversation history  
+- Animations + typing indicator  
 
 ### 📊 Dashboard
-- View tasks, events, and notes in one place  
+- Tasks, Events, Notes view  
+- 📊 Stats (counts)  
+- 🧠 AI Insights  
 
 ---
 
 ## 🧪 Example Commands
 
-### 📋 Tasks
+### Tasks
 - add task study  
 - show tasks  
 - delete task study  
+- delete all tasks  
 
-### 📅 Events
+### Events
 - remind me to call mom  
-- schedule meeting tomorrow  
+- schedule meeting  
 - delete all events  
 
-### 📝 Notes
+### Notes
 - save note startup idea  
 - show notes  
 - delete note startup  
@@ -91,35 +118,22 @@ add task study and remind me to call mom
 
 ## 🛠 Tech Stack
 
-- **Backend:** FastAPI  
-- **LLM:** Google Gemini API  
-- **Database:** SQLite  
-- **Frontend:** HTML, CSS, Jinja2  
-- **Deployment:** Docker + Cloud Run  
+- FastAPI  
+- Gemini API  
+- SQLite  
+- HTML, CSS (Jinja2)  
+- Docker + Cloud Run  
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone repository
-git clone https://github.com/MuskaanTimbadiya/multi-agent.git
-
-
-### 2. Install dependencies
+```bash
+git clone https://github.com/MuskaanTimbadiya/crypto-agent.git
+cd crypto-agent
 pip install -r requirements.txt
-
-
-### 3. Set API key
 export GOOGLE_API_KEY="your-api-key"
-
-
-### 4. Run locally
 uvicorn main:app --reload
-
-
-### 5. Open
-http://127.0.0.1:8000/
-
 
 ---
 
